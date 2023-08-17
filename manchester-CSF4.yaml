@@ -13,7 +13,9 @@ schedulers:
         num_nodes: [1, 1, 1]
         num_cores: [2, 1, 40]
         num_cores_per_node: [2, 1, 40]
+        parallel_modes: [distributed, shared, hybrid]
       multinode:
         num_nodes: [2, 1, null]
         num_cores: [80, 40, null]
         num_cores_per_node: [40, 40, 40]
+        parallel_modes: [distributed, hybrid]
