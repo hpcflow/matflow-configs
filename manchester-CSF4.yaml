@@ -1,0 +1,19 @@
+default_scheduler: slurm
+default_shell: bash
+schedulers:
+  direct:
+    defaults: {}
+  slurm:
+    defaults:
+      shebang_args: --login
+    partitions:
+      serial:
+        num_cores: [1, 1, 1]
+      multicore:
+        num_nodes: [1, 1, 1]
+        num_cores: [2, 1, 40]
+        num_cores_per_node: [2, 1, 40]
+      multinode:
+        num_nodes: [2, 1, null]
+        num_cores: [80, 40, null]
+        num_cores_per_node: [40, 40, 40]
