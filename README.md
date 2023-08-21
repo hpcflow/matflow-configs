@@ -1,7 +1,7 @@
 # matflow-configs
 Configurations for different clusters.
 
-Import one of these configs, using the CLI like this (where `[FILE NAME]` is one of the files in this repository):
+Import one of these configs, using the CLI like this (where `[FILE NAME]` is one of the YAML files in this repository):
 
 ```console
 matflow config import github://hpcflow:matflow-configs@main/[FILE NAME]
