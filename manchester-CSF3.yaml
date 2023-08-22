@@ -1,3 +1,4 @@
+environment_sources: [/mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml]
 default_scheduler: sge
 default_shell: bash
 schedulers:
