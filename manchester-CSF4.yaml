@@ -1,3 +1,4 @@
+environment_sources: [/mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF4.yaml]
 default_scheduler: slurm
 default_shell: bash
 schedulers:
