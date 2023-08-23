@@ -1,19 +1,21 @@
-environment_sources:
-  - /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml
-default_scheduler: sge
-default_shell: bash
-schedulers:
-  direct:
-    defaults: {}
-  sge:
-    defaults:
-      shebang_args: --login
-    parallel_environments:
-      null:
-        num_cores: [1, 1, 1]
-      smp.pe:
-        num_cores: [2, 1, 32]
-        num_nodes: [1, 1, 1]
-      mpi-24-ib.pe:
-        num_cores: [48, 24, 120]
-        num_nodes: [2, 1, 5]
+config:
+  machine: manchester-CSF3
+  environment_sources:
+    - /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml
+  default_scheduler: sge
+  default_shell: bash
+  schedulers:
+    direct:
+      defaults: {}
+    sge:
+      defaults:
+        shebang_args: --login
+      parallel_environments:
+        null:
+          num_cores: [1, 1, 1]
+        smp.pe:
+          num_cores: [2, 1, 32]
+          num_nodes: [1, 1, 1]
+        mpi-24-ib.pe:
+          num_cores: [48, 24, 120]
+          num_nodes: [2, 1, 5]
