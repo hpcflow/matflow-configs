@@ -15,6 +15,11 @@ import matflow as mf
 mf.config.import_from_file("github://hpcflow:matflow-configs@main/[FILE NAME]")
 ```
 
-Note: you can also specify the config invocation name you wish to update if you have multiple invocations defined in your config file.
+> [!NOTE]
+> You can also specify the config invocation name you wish to update if you have multiple invocations defined in your config file.
 
-Note: you can also pass a local file path to the `config import` / `mf.config.import_from_file` command.
+> [!NOTE]
+> You can also pass a local file path to the `config import` / `mf.config.import_from_file` command.
+
+> [!NOTE]
+> If you want to use a different branch (other than `main`), you must not use slashes in the branch name, because `fsspec` will not correctly interpret file location. 
