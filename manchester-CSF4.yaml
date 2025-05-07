@@ -7,12 +7,15 @@ config:
     - /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF4.yaml
   default_scheduler: slurm
   default_shell: bash
+  shells:
+    bash:
+      defaults:
+        executable_args: [--login]
   schedulers:
     direct:
       defaults: {}
     slurm:
-      defaults:
-        shebang_args: --login
+      defaults: {}
       partitions:
         serial:
           num_cores: [1, 1, 1]
