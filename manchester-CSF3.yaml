@@ -4,12 +4,15 @@ config:
     - /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml
   default_scheduler: sge
   default_shell: bash
+  shells:
+    bash:
+      defaults:
+        executable_args: [--login]
   schedulers:
     direct:
       defaults: {}
     sge:
-      defaults:
-        shebang_args: --login
+      defaults: {}        
       parallel_environments:
         null:
           num_cores: [1, 1, 1]
