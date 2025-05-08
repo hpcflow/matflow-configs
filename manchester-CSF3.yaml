@@ -1,8 +1,17 @@
+invocation:
+  environment_setup:
+  match:
+    hostname: login*.csf3.man.alces.network
 config:
   machine: manchester-CSF3
+  telemetry: true
+  log_file_path: logs/<<app_name>>_v<<app_version>>.log
   environment_sources:
-    - /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml
-  default_scheduler: sge
+  - FIXME/path/to/envs_CSF3.yaml
+  task_schema_sources: []
+  command_file_sources: []
+  parameter_sources: []
+  default_scheduler: slurm
   default_shell: bash
   shells:
     bash:
@@ -11,14 +20,44 @@ config:
   schedulers:
     direct:
       defaults: {}
-    sge:
-      defaults: {}        
-      parallel_environments:
-        null:
-          num_cores: [1, 1, 1]
-        amd.pe:
-          num_cores: [2, 1, 168]
-          num_nodes: [1, 1, 1]
-        smp.pe:
-          num_cores: [2, 1, 32]
-          num_nodes: [1, 1, 1]
+    slurm:
+      defaults: {}
+      partitions:
+        serial:
+          num_cores:
+          - 1
+          - 1
+          - 1
+        multicore:
+          num_nodes:
+          - 1
+          - 1
+          - 1
+          num_cores:
+          - 2
+          - 1
+          - 168
+          num_cores_per_node:
+          - 2
+          - 1
+          - 168
+          parallel_modes:
+          - distributed
+          - shared
+          - hybrid
+        multinode:
+          num_nodes:
+          - 2
+          - 1
+          -
+          num_cores:
+          - 80
+          - 40
+          -
+          num_cores_per_node:
+          - 40
+          - 40
+          - 40
+          parallel_modes:
+          - distributed
+          - hybrid
