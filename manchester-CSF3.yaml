@@ -4,7 +4,6 @@ invocation:
     hostname: login*.csf3.man.alces.network
 config:
   machine: manchester-CSF3
-  telemetry: true
   log_file_path: logs/<<app_name>>_v<<app_version>>.log
   environment_sources:
   - FIXME/path/to/envs_CSF3.yaml
