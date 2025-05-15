@@ -19,7 +19,10 @@ config:
     direct:
       defaults: {}
     slurm:
-      defaults: {}
+      defaults:
+        directives:
+          --time: 10:00
+          --partition: serial
       partitions:
         serial:
           num_cores:
