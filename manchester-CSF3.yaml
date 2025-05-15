@@ -5,7 +5,7 @@ invocation:
 config:
   machine: manchester-CSF3
   log_file_path: logs/<<app_name>>_v<<app_version>>.log
-  environment_sources: [] # FIXME/path/to/envs_CSF3.yaml
+  environment_sources: []
   task_schema_sources: []
   command_file_sources: []
   parameter_sources: []
@@ -19,7 +19,10 @@ config:
     direct:
       defaults: {}
     slurm:
-      defaults: {}
+      defaults:
+        directives:
+          --time: 10:00
+          --partition: serial
       partitions:
         serial:
           num_cores:
