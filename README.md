@@ -1,6 +1,9 @@
 # matflow-configs
 Configurations for different clusters.
 
+> [!WARNING]
+> The files in this repository are not _full_ configuration files. In other words, you should not replace your MatFlow configuration file with one of these files. Instead, they are individual configurations, of which you may have many within your configuration file, corresponding to, for example, different computing clusters that are accessible from some shared network home space.
+
 Import one of these configs, using the CLI like this (where `[FILE NAME]` is one of the YAML files in this repository):
 
 ```console
