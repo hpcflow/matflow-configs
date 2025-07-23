@@ -46,19 +46,19 @@ config:
           - distributed
           - shared
           - hybrid
-        multinode:
+        himem:
           num_nodes:
-          - 2
           - 1
-          -
+          - 1
+          - 1
           num_cores:
-          - 80
-          - 40
-          -
+          - 1
+          - 1
+          - 32
           num_cores_per_node:
-          - 40
-          - 40
-          - 40
+          - 1
+          - 1
+          - 32
           parallel_modes:
           - distributed
           - hybrid
