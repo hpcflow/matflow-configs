@@ -78,4 +78,3 @@ config:
           parallel_modes:
           - distributed
           - hybrid
-
