@@ -16,3 +16,5 @@ jobs:
                 level: warning
               line-length:
                 level: warning
+              indentation:
+                indent-sequences: consistent
