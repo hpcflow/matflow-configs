@@ -62,3 +62,20 @@ config:
           parallel_modes:
           - distributed
           - hybrid
+        hpcpool:
+          num_nodes:
+          - 1
+          - 1
+          - 124
+          num_cores:
+          - 128
+          - 1
+          - 1024
+          num_cores_per_node:
+          - 1
+          - 1
+          - 32
+          parallel_modes:
+          - distributed
+          - hybrid
+
