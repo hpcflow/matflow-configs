@@ -33,7 +33,7 @@ DAMASK_SIF="$SOFTWARE_DIR/$(basename "$DAMASK_SIF_SRC")"
 # --- 1. Python environment ---------------------------------------------------
 echo "Creating Python $PYTHON_VERSION venv at $VENV_DIR..."
 uv venv --allow-existing --python "$PYTHON_VERSION" "$VENV_DIR"
-uv pip install --python "$VENV_DIR/bin/python" \
+uv pip install --python "$VENV_DIR/bin/python" --prerelease=allow \
     "matflow==$MATFLOW_VERSION" damask damask-parse mtex
 
 if [[ "$PAUSE_AFTER_VENV" == "1" ]]; then
