@@ -70,3 +70,21 @@ The recipe is saved to the configured environment source file. `sif_path` is
 site-specific and must point to the DAMASK Singularity image available on the
 execution system. A local YAML file can be used as the import source in the same
 way.
+
+## Install scripts
+
+`install_scripts/` contains site-specific scripts that install MatFlow, import the
+site configuration, copy software files and set up MatFlow environments. For
+example, on Cambridge CSD3 (requires [uv](https://docs.astral.sh/uv/)):
+
+```console
+DREAM3D_SRC=/path/to/DREAM3D-6.5.171-Linux-x86_64.tar.gz \
+DAMASK_SIF_SRC=/path/to/damask-grid_3.1.0-ib.sif \
+bash install_scripts/cambridge-CSD3.sh
+```
+
+Set `SOFTWARE_DIR` (default `~/software`), `VENV_DIR` (default `~/matflow-venv`),
+`MATFLOW_VERSION` or `PYTHON_VERSION` to override the defaults. Set
+`PAUSE_AFTER_VENV=1` to pause after the venv is created and before it is activated,
+for example to add `export MATFLOW_CONFIG_DIR=...` to the venv's `bin/activate`
+script for testing.
