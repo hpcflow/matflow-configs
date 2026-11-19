@@ -7,7 +7,7 @@ Configurations for different clusters.
 Import one of these configs, using the CLI like this (where `[FILE NAME]` is one of the YAML files in this repository):
 
 ```console
-matflow config import github://hpcflow:matflow-configs@main/[FILE NAME]
+matflow config import --remote [FILE NAME]
 ```
 
 Or use the Python API like this:
@@ -15,7 +15,7 @@ Or use the Python API like this:
 ```python
 import matflow as mf
 
-mf.config.import_from_file("github://hpcflow:matflow-configs@main/[FILE NAME]")
+mf.config.import_from_file("[FILE NAME]", remote=True)
 ```
 
 > [!NOTE]
@@ -23,6 +23,11 @@ mf.config.import_from_file("github://hpcflow:matflow-configs@main/[FILE NAME]")
 
 > [!NOTE]
 > You can also pass a local file path to the `config import` / `mf.config.import_from_file` command.
+> Omit `--remote` / `remote=True` when using a local path or a full remote URL.
+
+Both config and environment imports use the `remote_import_dir` config item when
+set, falling back to MatFlow's default (`github://hpcflow:matflow-configs@main`).
+Like `data_dir`, this item accepts a local directory or an fsspec URL.
 
 > [!NOTE]
 > If you want to use a different branch (other than `main`), you must not use slashes in the branch name, because `fsspec` will not correctly interpret the file location.
@@ -32,7 +37,7 @@ mf.config.import_from_file("github://hpcflow:matflow-configs@main/[FILE NAME]")
 Some configs contain variables, written like `<<var:account[default=UKAEA-AP002-CPU]>>`. If you don't pass a value for a variable, its default value is used. To use a different value, pass `--var NAME VALUE` on the CLI. For example, to import the Cambridge CSD3 config with a different SLURM account:
 
 ```console
-matflow config import github://hpcflow:matflow-configs@main/cambridge-CSD3.yaml --var account MY-ACCOUNT
+matflow config import --remote cambridge-CSD3.yaml --var account MY-ACCOUNT
 ```
 
 Or with the Python API:
@@ -41,7 +46,8 @@ Or with the Python API:
 import matflow as mf
 
 mf.config.import_from_file(
-    "github://hpcflow:matflow-configs@main/cambridge-CSD3.yaml",
+    "cambridge-CSD3.yaml",
+    remote=True,
     variables={"account": "MY-ACCOUNT"},
 )
 ```
@@ -52,8 +58,7 @@ Site-specific environment definitions can be imported separately from the cluste
 configuration. For example, to import the Cambridge CSD3 DAMASK 3.1.0 IB build:
 
 ```console
-matflow env import \
-  github://hpcflow:matflow-configs@main/environments/cambridge-CSD3-damask.yaml \
+matflow env import --remote environments/cambridge-CSD3-damask.yaml \
   --name damask_env \
   --specifier site cambridge-CSD3 \
   --specifier version 3.1.0 \
