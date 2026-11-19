@@ -25,4 +25,23 @@ mf.config.import_from_file("github://hpcflow:matflow-configs@main/[FILE NAME]")
 > You can also pass a local file path to the `config import` / `mf.config.import_from_file` command.
 
 > [!NOTE]
-> If you want to use a different branch (other than `main`), you must not use slashes in the branch name, because `fsspec` will not correctly interpret the file location. 
+> If you want to use a different branch (other than `main`), you must not use slashes in the branch name, because `fsspec` will not correctly interpret the file location.
+
+## Config variables
+
+Some configs contain variables, written like `<<var:account[default=UKAEA-AP002-CPU]>>`. If you don't pass a value for a variable, its default value is used. To use a different value, pass `--var NAME VALUE` on the CLI. For example, to import the Cambridge CSD3 config with a different SLURM account:
+
+```console
+matflow config import github://hpcflow:matflow-configs@main/cambridge-CSD3.yaml --var account MY-ACCOUNT
+```
+
+Or with the Python API:
+
+```python
+import matflow as mf
+
+mf.config.import_from_file(
+    "github://hpcflow:matflow-configs@main/cambridge-CSD3.yaml",
+    variables={"account": "MY-ACCOUNT"},
+)
+```
