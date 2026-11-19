@@ -1,0 +1,27 @@
+invocation:
+  environment_setup:
+  match:
+    hostname: login-*-*
+config:
+  machine: cambridge-CSD3
+  log_file_path: logs/<<app_name>>_v<<app_version>>.log
+  environment_sources: []
+  task_schema_sources: []
+  command_file_sources: []
+  parameter_sources: []
+  default_scheduler: slurm
+  default_shell: bash
+  schedulers:
+    direct:
+      defaults: {}
+    slurm:
+      defaults:
+        directives:
+          --account: <<var:account[default=UKAEA-AP002-CPU]>>
+          --time: 00:10:00
+      partitions:
+        ukaea-spr:
+          num_cores: [1, 1, 112]
+  shells:
+    bash:
+      defaults: {}
