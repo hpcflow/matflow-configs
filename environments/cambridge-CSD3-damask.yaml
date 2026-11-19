@@ -1,0 +1,31 @@
+- name: damask_env
+  doc: DAMASK 3.1.0 grid executable for Cambridge CSD3.
+  specifiers:
+    site: cambridge-CSD3
+    version: "3.1.0"
+    build: ib
+  setup: |
+    . /etc/profile.d/modules.sh
+
+    module purge
+    module load singularity
+    module load dot
+    module load rhel8/slurm
+    module load rhel8/global
+    module load rhel8/default-icl
+
+    export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+    # POSIX UCX shared memory is incompatible with CSD3's /proc restrictions.
+    export UCX_TLS=^posix
+
+    IMG_PATH="<<var:sif_path>>"
+  executables:
+    - label: damask_grid
+      instances:
+        - parallel_mode:
+          command: srun -v --mpi=pmix --ntasks="$MATFLOW_RUN_NUM_MPI_RANKS" --cpus-per-task=1 singularity exec "$IMG_PATH" DAMASK_grid
+          num_cores:
+            start: 1
+            stop: 64
+            step: 1

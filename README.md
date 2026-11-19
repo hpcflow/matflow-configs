@@ -45,3 +45,23 @@ mf.config.import_from_file(
     variables={"account": "MY-ACCOUNT"},
 )
 ```
+
+## Environment recipes
+
+Site-specific environment definitions can be imported separately from the cluster
+configuration. For example, to import the Cambridge CSD3 DAMASK 3.1.0 IB build:
+
+```console
+matflow env import \
+  github://hpcflow:matflow-configs@main/environments/cambridge-CSD3-damask.yaml \
+  --name damask_env \
+  --specifier site cambridge-CSD3 \
+  --specifier version 3.1.0 \
+  --specifier build ib \
+  --var sif_path /path/to/damask-grid_3.1.0-ib.sif
+```
+
+The recipe is saved to the configured environment source file. `sif_path` is
+site-specific and must point to the DAMASK Singularity image available on the
+execution system. A local YAML file can be used as the import source in the same
+way.
