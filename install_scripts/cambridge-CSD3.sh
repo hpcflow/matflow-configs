@@ -9,7 +9,7 @@
 set -euo pipefail
 
 # --- Configuration -----------------------------------------------------------
-MATFLOW_VERSION="${MATFLOW_VERSION:-0.6.0a0}"
+MATFLOW_VERSION="${MATFLOW_VERSION:-0.6.0a1}"
 PYTHON_VERSION="${PYTHON_VERSION:-3.13}"
 VENV_DIR="${VENV_DIR:-$HOME/matflow-venv}"
 
